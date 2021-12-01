@@ -1,8 +1,8 @@
 # aoc2021
 
-Welcome to the Advent of Code[^aoc] Kotlin project created by [skepfyr][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
+Welcome to the Advent of Code[^aoc] Kotlin project created by [Skepfyr][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
 
-In this repository, skepfyr is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
+In this repository, Skepfyr is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
 
 If you stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
 
