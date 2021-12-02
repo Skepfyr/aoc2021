@@ -1,13 +1,7 @@
 import java.io.File
-import java.math.BigInteger
-import java.security.MessageDigest
 
 /**
- * Reads lines from the given input txt file.
+ * Reads lines from the given input file.
  */
-fun readInput(name: String) = File("resources", "$name.txt").readLines()
-
-/**
- * Converts string to md5 hash.
- */
-fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
+fun readInput(day: Int, test: Boolean = false) =
+    File("resources", "Day%02d%s.txt".format(day, if (test) "_test" else "")).readLines()
