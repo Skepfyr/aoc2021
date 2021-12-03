@@ -46,8 +46,8 @@ class Day03(test: Boolean) {
         var co2Bit = bits - 1
         while (co2Reports.size > 1) {
             val numOnes = co2Reports.count { it and (1 shl co2Bit) != 0 }
-            val mostCommon = numOnes in 0..(co2Reports.size - 1) / 2
-            co2Reports = co2Reports.filter { (it and (1 shl co2Bit) != 0) == mostCommon }
+            val leastCommon = numOnes in 0..(co2Reports.size - 1) / 2
+            co2Reports = co2Reports.filter { (it and (1 shl co2Bit) != 0) == leastCommon }
             co2Bit -= 1
         }
         val co2 = co2Reports[0]
