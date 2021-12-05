@@ -1,5 +1,3 @@
-import java.util.regex.Pattern
-
 fun main() {
     val test = Day04(test = true)
     check(test.part1() == 4512)
