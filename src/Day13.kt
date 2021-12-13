@@ -1,11 +1,11 @@
 fun main() {
     val test = Day13(test = true)
     check(test.part1() == 17)
-    check(test.part2() == 0)
+    test.part2()
 
     val day = Day13(test = false)
     println(day.part1())
-    println(day.part2())
+    day.part2()
 }
 
 class Day13(test: Boolean) {
@@ -70,7 +70,7 @@ class Day13(test: Boolean) {
         return fold(dots, instructions[0]).size
     }
 
-    fun part2(): Int {
+    fun part2() {
         var dots = dots
         for (instruction in instructions) {
             dots = fold(dots, instruction)
@@ -91,6 +91,5 @@ class Day13(test: Boolean) {
             }
             println()
         }
-        return 0
     }
 }
