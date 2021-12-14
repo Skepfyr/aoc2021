@@ -1,11 +1,19 @@
 fun main() {
     val test = Day13(test = true)
     check(test.part1() == 17)
-    test.part2()
+    check(
+        test.part2() == """
+        |█████
+        |█   █
+        |█   █
+        |█   █
+        |█████
+        |""".trimMargin()
+    )
 
     val day = Day13(test = false)
     println(day.part1())
-    day.part2()
+    println(day.part2())
 }
 
 class Day13(test: Boolean) {
@@ -46,12 +54,10 @@ class Day13(test: Boolean) {
         return dots.map {
             var (x, y) = it
             when (instruction.first) {
-                Dir.X -> if (x < instruction.second) {
-                    x = instruction.second - 1 - x
+                Dir.X -> if (x > instruction.second) {
+                    x = 2 * instruction.second - x
                 } else if (x == instruction.second) {
                     throw IllegalStateException("Dot on fold line $instruction: $it")
-                } else {
-                    x -= instruction.second + 1
                 }
                 Dir.Y -> if (y > instruction.second) {
                     y = 2 * instruction.second - y
@@ -70,7 +76,7 @@ class Day13(test: Boolean) {
         return fold(dots, instructions[0]).size
     }
 
-    fun part2() {
+    fun part2(): String {
         var dots = dots
         for (instruction in instructions) {
             dots = fold(dots, instruction)
@@ -85,11 +91,13 @@ class Day13(test: Boolean) {
             }
             paper[y][x] = true
         }
+        val output = StringBuilder(paper.size * (paper[0].size + 1))
         for (line in paper) {
             for (dot in line) {
-                print(if (dot) '#' else '.')
+                output.append(if (dot) '█' else ' ')
             }
-            println()
+            output.append('\n')
         }
+        return output.toString()
     }
 }
