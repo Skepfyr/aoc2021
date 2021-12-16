@@ -15,7 +15,7 @@ class Day15(test: Boolean) {
 
     private fun minPath(map: List<List<Int>>): Int {
         val distance = MutableList(map.size) { MutableList(map[it].size) { Int.MAX_VALUE } }
-        val next = sortedSetOf<Cell>(compareBy({ distance[it.y][it.x] }, { it.y }, { it.x }))
+        val next = ArrayDeque<Cell>()
         distance[0][0] = 0
         for (y in map.indices) {
             for (x in map[y].indices) {
@@ -24,8 +24,7 @@ class Day15(test: Boolean) {
         }
 
         while (next.isNotEmpty()) {
-            val cell = next.first()
-            next.remove(cell)
+            val cell = next.removeFirst()
             if (cell.y == map.lastIndex && cell.x == map[cell.y].lastIndex) {
                 return distance[cell.y][cell.x]
             }
@@ -37,16 +36,14 @@ class Day15(test: Boolean) {
             )) {
 
                 if (neighbour.y < 0 || neighbour.x < 0 ||
-                    neighbour.y > map.lastIndex || neighbour.x > map[neighbour.y].lastIndex ||
-                    !next.contains(neighbour)
+                    neighbour.y > map.lastIndex || neighbour.x > map[neighbour.y].lastIndex
                 ) {
                     continue
                 }
                 val newDist = distance[cell.y][cell.x] + map[neighbour.y][neighbour.x]
                 if (newDist < distance[neighbour.y][neighbour.x]) {
-                    next.remove(neighbour)
                     distance[neighbour.y][neighbour.x] = newDist
-                    next.add(neighbour)
+                    next.addLast(neighbour)
                 }
             }
         }
