@@ -4,11 +4,10 @@ import kotlin.math.min
 import kotlin.math.sign
 
 fun main() {
-    /*
     val test = Day17(test = true)
     check(test.part1() == 45)
     check(test.part2() == 112)
-*/
+
     val day = Day17(test = false)
     println(day.part1())
     println(day.part2())
