@@ -1,5 +1,4 @@
 import kotlin.math.absoluteValue
-import kotlin.math.max
 
 fun main() {
     val test = Day19(test = true)
